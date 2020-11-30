@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "todey-web"
+    }
+  },
+  "defaultProject": "todey-web",
+  "cli": {
+    "analytics": false
+  }
 }
