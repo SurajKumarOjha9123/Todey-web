@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FuncService } from '../func.service';
 
@@ -7,16 +8,28 @@ import { FuncService } from '../func.service';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent implements OnInit {
-  List = []
+  listDisplay = []
   tod = ''
   dat = ''
   des = ''
-  constructor(public data :FuncService) { }
+  todoItem;
+  constructor(public data: FuncService, public http: HttpClient) {
 
-  
+  }
+
 
   ngOnInit(): void {
-    this.List = this.data.todoList
+    // this.List = this.data.todoList
+
+    this.todoItem = {
+      "email": "kumarsurajojha6012001@gmail.com"
+    }
+    this.http.post<any>('http://localhost:3000/display/all', this.todoItem)
+      .subscribe(data => {
+        this.listDisplay = data
+        this.data.todoItem = data
+        console.log(data)
+      })
   }
 
 }
