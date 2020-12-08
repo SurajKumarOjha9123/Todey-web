@@ -1,0 +1,25 @@
+<div style="padding-bottom: 150px; background-color: rgba(135, 207, 235, 0.459) ">
+    <h1 style="text-align: center;"> Create your Account</h1>
+    <div
+        style="max-width: 900px; margin: auto; margin-top: 40px; border: 3px solid brown; background-color: rgba(255, 228, 196, 0.788); padding: 50px; text-align: center; box-shadow: 5px 10px;">
+        <div class="inp" style="text-align: center;">
+            <input type="text" name="name" [(ngModel)]="name"
+                style="background-color: rgba(255, 127, 80, 0.267); width: 80%; height: 30px; border-radius: 5px; border-left: 7px solid chocolate;border-top: 1px inset black; font-size: 18px; margin-bottom: 20px;"
+                placeholder="_Name">
+
+            <input type="text" name="email" [(ngModel)]="email"
+                style="background-color: rgba(255, 127, 80, 0.267);width: 80%; height: 30px; border-radius: 5px; border-left: 7px solid chocolate;border-top: 1px inset black; font-size: 18px;margin-bottom: 20px;"
+                placeholder="_Email">
+
+            <input type="text" name="password" [(ngModel)]="password"
+                style="background-color: rgba(255, 127, 80, 0.267);width: 80%; height: 30px; border-radius: 5px; border-left: 7px solid chocolate;border-top: 1px inset black; font-size: 18px;margin-bottom: 20px;"
+                placeholder="_Password">
+
+            <button type="submit" (click)="this.CreateUser(name,password,email)"
+                style="width: 80%; height: 35px; font-size: 18px; background-color: chocolate; border-radius: 5px;">Create
+                Account</button>
+        </div>
+        <!-- <app-display [todo]="todoList"></app-display> -->
+
+
+    </div>
