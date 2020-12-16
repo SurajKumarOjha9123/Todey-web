@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { EmailValidator } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FuncService } from '../func.service';
 
 @Component({
@@ -13,22 +15,23 @@ export class DisplayComponent implements OnInit {
   dat = ''
   des = ''
   todoItem;
-  constructor(public data: FuncService, public http: HttpClient) {
+  email: String;
+  constructor(public data: FuncService, public http: HttpClient, public router : ActivatedRoute, public route : Router) {
 
   }
 
+  back(){
+    this.route.navigate(['/add',this.email])
+  }
 
   ngOnInit(): void {
-    // this.List = this.data.todoList
-
+    this.email = this.router.snapshot.paramMap.get('id')
     this.todoItem = {
-      "email": "kumarsurajojha6012001@gmail.com"
+      "email": this.email
     }
     this.http.post<any>('http://localhost:3000/display/all', this.todoItem)
       .subscribe(data => {
-        this.listDisplay = data
-        this.data.todoItem = data
-        console.log(data)
+        this.data.todoList = data
       })
   }
 

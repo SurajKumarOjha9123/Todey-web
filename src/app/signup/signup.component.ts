@@ -12,6 +12,7 @@ export class SignupComponent implements OnInit {
   password: String
   email: String
   user = {}
+  result = false;
 
   constructor(public http: HttpClient) { }
 
@@ -21,9 +22,13 @@ export class SignupComponent implements OnInit {
       password: password,
       email: email
     }
-    this.http.post<any>('http://localhost:3000/create/user', this.user)
-      .subscribe(data => {
-        console.log(data)
+    this.http.post<any>('http://localhost:3000/create/user', this.user, { observe: 'response' })
+      .subscribe(response => {
+        if(response.body.res==="notok"){
+          alert("Account alredy exist😅")
+        }else{
+          alert("Account created successfully😍")
+        }
       })
   }
 

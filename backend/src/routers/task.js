@@ -10,9 +10,8 @@ router.post('/create/task', async (req, res) => {
             return res.status(400).send()
         }
         await task.save()
-        console.log("hello")
         const alltask = await Task.find({ email: req.body.email })
-        res.send(alltask)
+        res.send({"res" : "ok"})
     }
     catch (e) {
         res.status(500).send(e)

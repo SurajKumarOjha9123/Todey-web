@@ -15,12 +15,16 @@ router.get('/display/user', async (req, res) => {
 
 router.post('/create/user', async (req, res) => {
     try {
-        const user = new User(req.body)
-        if (!user) {
-            return res.status(400).send()
+        const user = await User.find({email : req.body.email})
+        if(user.length>0){
+            return res.status(200).send({"res" : "notok"})
         }
-        user.save()
-        res.send(user)
+        const user1 = new User(req.body)
+        if (!user1) {
+            return res.status(400).send({"res": "notok"})
+        }
+        user1.save()
+        res.send(user1)
     }
     catch (e) {
         res.status(500).send(e)

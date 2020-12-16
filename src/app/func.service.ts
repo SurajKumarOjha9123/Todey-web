@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,30 +11,30 @@ export class FuncService {
   des = ''
   dat = ''
   public todoList = []
-  email = 'kumarsurajojha6012001@gmail.com'
 
   todoItem: object;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public router : Router) { }
 
-  AddTodo(todo: String, description: String, date) {
+  AddTodo(todo: String, description: String, date, email : String) {
     this.todoItem = {
-      "email": this.email,
+      "email": email,
       "todo": todo,
       "description": description,
       "date": date
     }
-    this.http.post<any>("http://localhost:3000/create/task", this.todoItem)
-      .subscribe(data => {
-        this.todoList = data
-        console.log('successfully added')
+    this.http.post<any>("http://localhost:3000/create/task", this.todoItem, {observe: 'response'})
+      .subscribe(response => {
+        if(response.body.res==="ok"){
+          alert("Successfully Added❤")
+        }
       })
   }
-  deleteTodo(todo: String, description: String) {
+  deleteTodo(todo: String, description: String,email:String) {
     this.todoItem = {
       "todo": todo,
       "description": description,
-      "email": "kumarsurajojha6012001@gmail.com"
+      "email": email
     }
     this.http.post<any>('http://localhost:3000/delete/todo', this.todoItem)
       .subscribe(data => {
@@ -42,14 +43,8 @@ export class FuncService {
       })
   }
 
-  getList() {
-    this.todoItem = {
-      "email": "kumarsurajojha6012001@gmail.com"
-    }
-    this.http.post<any>('http://localhost:3000/delete/todo', this.todoItem)
-      .subscribe(data => {
-        this.todoList = data
-      })
+  getList(email: String) {
+      this.router.navigate(['/display',email])
   }
 
 

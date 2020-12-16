@@ -7,13 +7,6 @@ const userSchema = mongoose.Schema({
         unique: true,
         required: true,
         trim: true,
-        validate: {
-            validator(value) {
-                if (!validator.isEmail(value)) {
-                    throw new Error('Invalid email')
-                }
-            }
-        }
     },
     name: {
         type: String,
@@ -22,14 +15,6 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
-        trim: true,
-        validate: {
-            validator(value) {
-                if (value.length < 6) {
-                    throw new Error('password too short')
-                }
-            }
-        }
     }
 })
 

@@ -15,9 +15,14 @@
                 style="background-color: rgba(255, 127, 80, 0.267);width: 80%; height: 30px; border-radius: 5px; border-left: 7px solid chocolate;border-top: 1px inset black; font-size: 18px;margin-bottom: 20px;"
                 placeholder="_Password">
 
+            
             <button type="submit" (click)="this.CreateUser(name,password,email)"
-                style="width: 80%; height: 35px; font-size: 18px; background-color: chocolate; border-radius: 5px;">Create
-                Account</button>
+                style="width: 80%; height: 35px; font-size: 18px; background-color: chocolate; border-radius: 5px; margin-top: 20px;"
+                >Create Account</button>
+                <button type="submit"
+                style="width: 80%; height: 35px; font-size: 18px; background-color: chocolate; border-radius: 5px; margin-top: 20px;"
+                [routerLink]="'/'">Login Page</button>
+                
         </div>
         <!-- <app-display [todo]="todoList"></app-display> -->
 
