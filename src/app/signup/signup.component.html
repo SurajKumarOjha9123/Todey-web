@@ -3,28 +3,39 @@
     <div
         style="max-width: 900px; margin: auto; margin-top: 40px; border: 3px solid brown; background-color: rgba(255, 228, 196, 0.788); padding: 50px; text-align: center; box-shadow: 5px 10px;">
         <div class="inp" style="text-align: center;">
-            <input type="text" name="name" [(ngModel)]="name"
-                style="background-color: rgba(255, 127, 80, 0.267); width: 80%; height: 30px; border-radius: 5px; border-left: 7px solid chocolate;border-top: 1px inset black; font-size: 18px; margin-bottom: 20px;"
-                placeholder="_Name">
+            <mat-form-field style="width: 80%;">
+                <mat-label style="font-size: 20px; color: rgba(255, 0, 0, 0.801) ; font-family: cursive; padding-left: 10px;">Name</mat-label>
+                <input matInput name="name" [(ngModel)]="name" style="background-color: white; font-size: 17px; height:30px; 
+                    font-weight: 300; background-color: white;padding-left: 10px;">
+            </mat-form-field>
 
-            <input type="text" name="email" [(ngModel)]="email"
-                style="background-color: rgba(255, 127, 80, 0.267);width: 80%; height: 30px; border-radius: 5px; border-left: 7px solid chocolate;border-top: 1px inset black; font-size: 18px;margin-bottom: 20px;"
-                placeholder="_Email">
+            <mat-form-field style="width: 80%;">
+                <mat-label style="font-size: 20px; color: rgba(255, 0, 0, 0.801) ; font-family: cursive; padding-left: 10px;">Email ID</mat-label>
+                <input matInput name="email" [(ngModel)]="email" style="background-color: white; font-size: 17px; height:30px; 
+                    font-weight: 300; background-color: white;padding-left: 10px;">
+            </mat-form-field>
 
-            <input type="text" name="password" [(ngModel)]="password"
-                style="background-color: rgba(255, 127, 80, 0.267);width: 80%; height: 30px; border-radius: 5px; border-left: 7px solid chocolate;border-top: 1px inset black; font-size: 18px;margin-bottom: 20px;"
-                placeholder="_Password">
+            <mat-form-field style="width: 80%;">
+                <mat-label style="font-size: 20px; color: rgba(255, 0, 0, 0.801) ; font-family: cursive; padding-left: 10px;">Password</mat-label>
+                <input matInput name="password" [(ngModel)]="password" style="background-color: white; font-size: 17px; height:30px; 
+                    font-weight: 300; background-color: white;padding-left: 10px;">
+            </mat-form-field>
 
-            
-            <button type="submit" (click)="this.CreateUser(name,password,email)"
-                style="width: 80%; height: 35px; font-size: 18px; background-color: chocolate; border-radius: 5px; margin-top: 20px;"
-                >Create Account</button>
-                <button type="submit"
-                style="width: 80%; height: 35px; font-size: 18px; background-color: chocolate; border-radius: 5px; margin-top: 20px;"
-                [routerLink]="'/'">Login Page</button>
+            <button mat-raised-button color="warn" (click)="this.CreateUser(name,password,email)"
+                style="width: 80%; height: 35px; font-size: 18px; margin-bottom: 10px;" >Create Account
+            </button>
+
+            <button mat-raised-button color="warn"
+                style="width: 80%; height: 35px; font-size: 18px;  border-radius: 5px; margin-bottom: 30px;"
+                [routerLink]="'/'">Login Page
+            </button>
                 
         </div>
         <!-- <app-display [todo]="todoList"></app-display> -->
 
 
     </div>
+
+
+    
+    
