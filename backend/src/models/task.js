@@ -13,6 +13,9 @@ const taskSchema = mongoose.Schema({
         type: String
     },
     date: {
+        type: Date
+    },
+    noOfDaysPassed :{
         type: String
     }
 })

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
-// const url = 'mongodb+srv://appMain:6j3bF57Z1W4bdzxl@cluster0.3mbah.mongodb.net/Yukti-Server?retryWrites=true&w=majority'
-const url2 = 'mongodb://127.0.0.1:27017/TaskApp'
+const url2 = "mongodb+srv://todoApp:9jf0IanTarFyYg8t@cluster0.penme.mongodb.net/TaskApp?retryWrites=true&w=majority"
 mongoose.connect(url2,{
     useNewUrlParser:true,
     useCreateIndex:true

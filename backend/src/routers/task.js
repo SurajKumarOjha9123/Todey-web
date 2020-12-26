@@ -5,7 +5,14 @@ const router = express.Router()
 
 router.post('/create/task', async (req, res) => {
     try {
-        const task = await Task(req.body)
+        console.log(req.body)
+        const task = await Task({
+            email: req.body.email,
+            todo: req.body.todo,
+            description: req.body.description,
+            date: req.body.date,
+            noOfDaysPassed: 0
+          })
         if (!task) {
             return res.status(400).send()
         }
@@ -21,9 +28,18 @@ router.post('/create/task', async (req, res) => {
 router.post('/display/all', async (req, res) => {
     try {
         const task = await Task.find({ email: req.body.email })
+        for(var i=0;i<task.length;i++){
+            var date1 = new Date;
+            var date2 = new Date(task[i].date);
+            var Difference_In_Time = date2.getTime() - date1.getTime();
+            var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+            task[i].noOfDaysPassed = String(Math.ceil(-Difference_In_Days))
+            await task[i].save()
+        }
         return res.send(task)
     }
     catch (e) {
+        console.log(e)
         res.status(500).send()
     }
 })
@@ -74,6 +90,26 @@ router.get('/display/admin', async (req, res) => {
         res.send(task)
     }
     catch (e) {
+        res.status(500).send()
+    }
+})
+
+router.post('/display/all/inc',async(req,res)=>{
+    try{
+        const task = await Task.find({ email: req.body.email }).sort({date:1})
+        res.send(task)
+    }
+    catch(e){
+        res.status(500).send()
+    }
+})
+
+router.post('/display/all/desc',async(req,res)=>{
+    try{
+        const task = await Task.find({ email: req.body.email }).sort({date:-1})
+        res.send(task)
+    }
+    catch(e){
         res.status(500).send()
     }
 })

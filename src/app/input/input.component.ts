@@ -21,6 +21,7 @@ export class InputComponent implements OnInit {
 
   ngOnInit(): void {
     this.email = this.router.snapshot.paramMap.get('id')
+    console.log("email : ",this.email)
     // this.todoList = this.data.todoList
   }
 

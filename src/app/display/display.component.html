@@ -5,12 +5,21 @@
         <h2 style="font-family: cursive;">TODO Items</h2>
         <p style="font-family : cursive; font-size : 20px;">User : <b>{{this.email}}</b></p>
         <h3>Quantity : {{this.data.todoList.length}}</h3>
+        <div style="width: 60%; padding-left: 29px; text-align: center; background-color: #F2D4C7">
+            <table  style="background-color: rgba(255, 255, 255, 0.349); text-align: end;">
+                <tr>
+                    <td style="font-weight: 900; color: brown; padding-top: 10px; padding-bottom: 15px;">SORT TODO?</td>
+                    <td><button mat-raised-button style="background-color: rgba(210, 105, 30, 0.746); color: cornsilk;" (click)="this.data.Oldest(this.email)" >oldest</button></td>
+                    <td><button mat-raised-button color="accent"  (click)="this.data.Newest(this.email)">latest</button></td>
+                </tr>
+            </table>
+        </div>
         <table
             style=" width: 90%; text-align: left; background-color: burlywood; padding: 20px; margin-left: 30px; box-shadow: 5px 10px;">
             <h2 *ngIf="this.data.todoList.length==0" style="font-family: cursive;">List is empty</h2>
-            <div style="border: 3px solid #318a82e3; padding-left: 50px; padding-top: 10px; padding-bottom: 0px; margin: 10px; box-shadow: 5px 10px; background-color: cornsilk; text-align: left;"
+            <div style="border: 2px solid rgba(128, 0, 128, 0.602); padding-left: 50px; padding-top: 10px; padding-bottom: 0px; margin: 0px; box-shadow: 5px 10px; background-color: cornsilk; text-align: left;"
                 *ngFor="let item of this.data.todoList">
-                <tr style="font-size: 20px; font-family: cursive;">
+                <tr style="font-size: 20px; font-family:'Times New Roman', Times, serif">
                     <td style="width: 90%;"><b>Todo</b> : {{item.todo}}</td>
                     
                 </tr>
@@ -22,20 +31,26 @@
                         <button mat-fab color="warn" (click)="this.data.deleteTodo(item.todo,item.description,this.email)"><mat-icon>delete</mat-icon></button>
                     </td>
                 </tr>
-                <tr >
-                    <th style="font-weight:300;">
-                        <div style="width: 100%;"><b>Date</b> : {{item.date}}</div>
+                <mat-divider style="width: 40%;"></mat-divider>
+                <tr>
+                    <th style="font-weight:300; font-weight: 500; font-size: 14px;">
+                        <div style="width: 100%;"><b>@</b>Date : </div>
                     </th>
+                    <td style="font-size: 13px;">{{item.date}}</td>
+                    <th style="font-weight:300; font-weight: 500; font-size: 14px;">
+                        <div style="width: 100%;"><b>@</b>Day Value : </div>
+                    </th>
+                    <td style="font-size: 13px;">{{item.noOfDaysPassed}}</td>
                 </tr>
                 <br>
             </div>
         </table>
         <button
-            style=" margin-top: 50px; width: 80%; height: 30px; height: 40px; border-radius: 4px; box-shadow: black; font-size: 20px; font-family: cursive; background-color: chocolate;"
+            style=" margin-top: 50px; width: 85%; height: 30px; height: 40px; border-radius: 4px; box-shadow: black; font-size: 20px; font-family: cursive; background-color: chocolate;"
             (click)="back()" type="submit">Add Todo</button>
 
         <button
-            style=" margin-bottom: 50px; margin-top: 30px; width: 80%; height: 30px; height: 40px; border-radius: 4px; box-shadow: black; font-size: 20px; font-family: cursive; background-color: chocolate;"
+            style=" margin-bottom: 50px; margin-top: 20px; width: 85%; height: 30px; height: 40px; border-radius: 4px; box-shadow: black; font-size: 20px; font-family: cursive; background-color: chocolate;"
             [routerLink]="'/'" type="submit">LOGOUT</button>
     </div>
 </div>

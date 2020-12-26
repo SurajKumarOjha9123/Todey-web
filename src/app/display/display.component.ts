@@ -24,8 +24,10 @@ export class DisplayComponent implements OnInit {
     this.route.navigate(['/add',this.email])
   }
 
+
   ngOnInit(): void {
     this.email = this.router.snapshot.paramMap.get('id')
+    console.log("ngOninit",this.email)
     this.todoItem = {
       "email": this.email
     }

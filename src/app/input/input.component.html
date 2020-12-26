@@ -23,39 +23,43 @@
         style="max-width: 900px; margin: auto; margin-top: 40px; border: 3px solid brown; background-color: rgba(255, 228, 196, 0.788); padding: 50px; text-align: center; box-shadow: 5px 10px;">
         <p style="font-family: cursive; font-size: 20px;margin: 20px;">User : <b>{{this.email}}</b></p>
         <br><br><table style="width: 100%;">
-            <th>
-                <label style="font-family: cursive; font-size: 20px;">Enter your todo : </label>
-                <input type="text" name="tod" [(ngModel)]="tod" style="border-radius: 4px; height: 20px;">
-            </th>
-            <th>
-                <label style="font-family: cursive; font-size: 20px;">Enter todo description : </label>
-                <input type="text" name="des" [(ngModel)]="des" style="border-radius: 4px; height: 20px;">
-            </th>
+            <tr>
+                <th>
+                    <mat-form-field style="background-color: white; width: 80%; border: 1px solid brown; border-radius: 3px;">
+                        <mat-label style="padding-left: 10px;">ENTER YOUR TODO HERE</mat-label>
+                        <input matInput name="tod" [(ngModel)]="tod" style="padding-left: 10px; font-family: 'Times New Roman', Times, serif;
+                        margin-left: 10px; background-color: rgba(255, 248, 220, 0.411); " >
+                      </mat-form-field>
+                </th>
+            </tr><br>
+            <tr>
+                <th>
+                    <mat-form-field appearance="fill" style="width: 80%; background-color: white; border: 1px solid brown;">
+                        <mat-label>TODO DESCRIPTION</mat-label>
+                        <textarea matInput name="des" [(ngModel)]="des" style="font-family: 'Times New Roman', Times, serif;"></textarea>
+                      </mat-form-field>
+                </th>
+            </tr>
         </table>
         <br><br>
-        <table style="width: 90%;">
+        <table style="width: 100%; margin-left: 0px;">
             <th>
-                <label style="font-family: cursive; font-size: 20px;">Enter todo date : </label>
-                <input type="date" name="dat" [(ngModel)]="dat" style="border-radius: 4px; height: 20px;">
-            </th>
-        </table><br><br>
-        <table style="width: 90%; margin-left: 20px;">
-            <th>
-                <button
-                    style="width: 80%; height: 30px; border-radius: 4px; box-shadow: black; font-size: 20px; font-family: cursive; background-color: chocolate;"
-                    (click)="this.data.AddTodo(tod,des,dat,this.email)" type="submit">Add Task</button>
+                <button mat-raised-button color="warn"
+                style="width: 80%; height: 35px; font-size: 18px;  border-radius: 5px; margin-bottom: 0px;"
+                 (click)="this.data.AddTodo(tod,des,this.email)">ADD TODO
+            </button>
             </th>
         </table>
         <br>
-        <table style="width: 90%; margin-left: 20px; ">
+        <table style="width: 100%; margin-left: 0px; ">
             <th>
-                <button
-                    style="width: 80%; height: 30px; height: 30px; border-radius: 4px; box-shadow: black; font-size: 20px; font-family: cursive; background-color: chocolate;"
-                    (click)="this.data.getList(this.email)" [routerLink]="'/display'" type="submit">Display List</button>
+                <button mat-raised-button color="warn"
+                style="width: 80%; height: 35px; font-size: 18px;  border-radius: 5px; margin-bottom: 30px;"
+                [routerLink]="['/display',this.email]" >DISPLAY TODO
+            </button>
             </th>
         </table>
     </div>
-    <!-- <app-display [todo]="todoList"></app-display> -->
 
 
 </div>
